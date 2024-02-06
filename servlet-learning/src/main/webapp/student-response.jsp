@@ -7,6 +7,15 @@
         <br><br>
         The Student's country:  ${param.country}
         <br><br>
-        The student's favorite progamming language: ${param.favoriteLanguage}
+        The student's favorite progamming language: <br>
+        <ul> 
+            <% 
+                String[] langs = request.getParameterValues("favoriteLanguage");
+                for(String tempLang: langs)
+                {
+                    out.println("<li>" + tempLang + "</li>");
+                }
+            %>
+        </ul>
     </body>
 </html>
