@@ -22,7 +22,7 @@
             </tr>
             <c:forEach var="tempStudent" items="${myStudents}">
                 <tr>
-                    <td>${tempStudent.firstName}</td>
+                    <td>${tempStud  ent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>
                         <c:choose>
