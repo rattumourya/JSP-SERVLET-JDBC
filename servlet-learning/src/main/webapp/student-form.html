@@ -1,0 +1,30 @@
+<html>
+    <header><title>Student Registration Form</title></header>
+    <body>
+        <form action="student-response.jsp">
+            First Name: <input type="text" name="firstName" id="firstName">
+            <br><br>
+            Last Name:  <input type="text" name="lastName" id="lastName">
+            <br><br>
+            Country:    <Select name="country">
+                            <option value="IN">India</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="CH">China</option>
+                            <option value="SR">SRI LANKA</option>
+                            <option value="TR">TURKY</option>
+                        </Select>
+            <br><br>
+            Favorite Programming Languages: <br>
+                <!-- <input type="radio" name="favoriteLanguage" value="Java"> Java
+                <input type="radio" name="favoriteLanguage" value="C#"> C#
+                <input type="radio" name="favoriteLanguage" value="PHP"> PHP
+                <input type="radio" name="favoriteLanguage" value="Ruby"> Ruby -->
+                <input type="checkbox" name="favoriteLanguage" value="Java"> Java
+                <input type="checkbox" name="favoriteLanguage" value="C#"> C#
+                <input type="checkbox" name="favoriteLanguage" value="PHP"> PHP
+                <input type="checkbox" name="favoriteLanguage" value="Ruby"> Ruby
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
