@@ -1,6 +1,8 @@
 JSP Custom Tags Tutorial: www.luv2code.com/tagtutorial
 JSTL Tutorial: www.luv2ocde.com/jstltutorial
 JSTL web site: http://jstl.java.net
+JSTL JavaDoc: wwww.luv2code.com/jstl-javadoc
+JSTL Specification PDF: www.luv2code.com/jstl-pdf  
 
 FAQ: Where can I download the JSTL JAR files from the Internet?
 https://mvnrepository.com/artifact/org.glassfish.web/javax.servlet.jsp.jstl/1.2.1
@@ -10,3 +12,4 @@ Copy the two JAR files
 
 - javax.servlet.jsp.jstl-1.2.1.jar
 - javax.servlet.jsp.jstl-api-1.2.1.jar
+
