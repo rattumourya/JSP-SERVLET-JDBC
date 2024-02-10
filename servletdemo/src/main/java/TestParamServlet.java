@@ -8,26 +8,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletContext;
 
-@WebServlet("/TestParamServlet")
-public class TestParamServlet extends HttpServlet { 
 
+public class TestParamServlet extends HttpServlet {
+ 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // step 1: set the content type 
+        // Step 1: set content type
         response.setContentType("text/html");
-        // step 2: get the printwriter
+        
+        // Step 2: get printwriter
         PrintWriter out = response.getWriter();
-        // step 3: read configuration parameters from web xml
-        ServletContext content = getServletContext();
-        // step 4: generate the html content on the fly
-        String maxCartSize = content.getInitParameter("max-shopping-cart");
-        String teamName = content.getInitParameter("project-team-name");
-
+        
+        // Step 3: read configuration params
+        ServletContext context = getServletContext(); // inherit from HttpServlet
+        String maxCartSize = context.getInitParameter("max-shopping-cart");
+        String teamName = context.getInitParameter("project-team-name");
+        
+        // READ PER-SERVLET parameter
+        String theGreetingMessage = getInitParameter("greeting");
+        String theServiceLevel = getInitParameter("serviceLevel");
+        
+        // Step 4: generate HTML content
         out.println("<html><body>");
-        out.println("Max cart : " + maxCartSize);
+        out.println("Max cart: " + maxCartSize);
         out.println("<br/><br/>");
-        out.println("Team name : " + teamName);
-        out.println("</body></html>");
-
-    }
-
+        out.println("Team name: " + teamName);
+        out.println("<hr>");
+        out.println("Per Servlet Params<br/><br/>");
+        out.println("greeting: " + theGreetingMessage);
+        out.println("<br/><br/>");
+        out.println("serviceLevel: " + theServiceLevel);
+        
+        out.println("</body></html>");    
+    }   
+ 
 }

@@ -18,5 +18,24 @@
 		<param-name>project-team-name</param-name>
 		<param-value>The Coding Gurus</param-value>
 	</context-param>
+
+    <servlet>
+      <servlet-name>TestParamServlet</servlet-name>
+      <servlet-class>TestParamServlet</servlet-class>
+ 
+      <init-param>
+        <param-name>greeting</param-name>
+        <param-value>Welcome</param-value>
+      </init-param>
+ 
+      <init-param>
+        <param-name>serviceLevel</param-name>
+        <param-value>Platinum</param-value>
+      </init-param>
+    </servlet>  
+	  <servlet-mapping>
+		<servlet-name>TestParamServlet</servlet-name>
+		<url-pattern>/demo</url-pattern>
+   	  </servlet-mapping>
 	
 </web-app>
