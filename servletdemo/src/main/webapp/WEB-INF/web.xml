@@ -8,4 +8,15 @@
 		<welcome-file>student-form.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- Define some confi parameters -->
+	<context-param>
+		<param-name>max-shopping-cart</param-name>
+		<param-value>99</param-value>
+	</context-param>
+	<context-param>
+		<param-name>project-team-name</param-name>
+		<param-value>The Coding Gurus</param-value>
+	</context-param>
+	
 </web-app>
