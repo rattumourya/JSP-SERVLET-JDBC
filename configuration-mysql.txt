@@ -1,0 +1,14 @@
+sudo su
+
+sudo apt-get update && sudo apt-get dist-upgrade
+
+sudo apt install mysql-server
+
+sudo cat /etc/mysql/debian.cnf
+
+$ mysql -u debian-sys-maint -p
+Enter password: 
+
+or 
+
+service mysql start
