@@ -3,6 +3,8 @@ sudo su
 sudo apt-get update && sudo apt-get dist-upgrade
 
 sudo apt install mysql-server
+or
+sudo apt install defaul-mysql-server
 
 sudo cat /etc/mysql/debian.cnf
 
@@ -12,3 +14,12 @@ Enter password:
 or 
 
 service mysql start
+
+
+
+// check ubantu version
+lsb_release -a
+
+
+// search mysql-server 
+apt search  mysql-server
