@@ -23,3 +23,6 @@ lsb_release -a
 
 // search mysql-server 
 apt search  mysql-server
+
+// remove mysql files completely
+sudo apt-get purge mysql*
