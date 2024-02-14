@@ -6,20 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Tracker App</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
     <%
         List<Student> theStudents = (List<Student>) request.getAttribute("STUDENT_LIST");
     %>
 <body>
     
-    <div class="wrapper">
-        <div class="header">
+    <div id="wrapper">
+        <div id="header">
             <h2>Foobar University</h2>
         </div>
     </div>
 
-    <div class="container">
-        <div class="content">
+    <div id="container">
+        <div id="content">
             <table>
                 <tr>
                     <th>First Name</th>
