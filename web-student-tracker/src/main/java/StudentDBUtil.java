@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -10,10 +11,6 @@ import model.Student;
 public class StudentDBUtil {
     
     // private DataSource dataSource;
-
-    // public StudentDBUtil(DataSource dataSource) {
-    //     this.dataSource = dataSource;
-    // }
 
     public List<Student> getStudents() throws Exception {
 
@@ -70,6 +67,35 @@ public class StudentDBUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void addStudent(Student theStudent) throws Exception {
+       
+        Connection myConnection = null;
+        PreparedStatement myStatement = null;
+
+        try {
+            // get a connection 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/web_student_tracker","webstudent","webstudent");
+
+            // create sql statement
+            String sql = "insert into student" +
+                            "(first_name,last_name,email)" + 
+                            "values(?,?,?)";
+
+            myStatement =  myConnection.prepareStatement(sql);
+            //set the param values for the student
+            myStatement.setString(1, theStudent.getFirstName());
+            myStatement.setString(2, theStudent.getLastName());
+            myStatement.setString(3, theStudent.getEmail());
+
+            // execute the sql statement
+            myStatement.execute();
+        } finally {
+            close(myConnection, myStatement, null);
+        }
+        
     }
 
     
