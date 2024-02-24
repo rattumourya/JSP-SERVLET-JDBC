@@ -1,0 +1,21 @@
+h1 {
+    color: red;
+}
+.label {
+    margin-bottom: 3px;
+    display: block;
+    margin-left: 4px;
+}
+
+#documentTable tr td {
+    padding: 2px;
+    border: none;
+    display: block;
+    width: 90%;
+}
+
+#documentTable {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
