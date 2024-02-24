@@ -29,16 +29,14 @@ public class Hello extends HttpServlet {
 		try {
 			Template template = cfg.getTemplate("hello.ftl");
 			Map<String,Object> dataModel = new HashMap<>();
-			ArrayList<String> arrayList = new ArrayList<>();
-			arrayList.add("Address Line 1");
-			arrayList.add("Address Line 2");
-			arrayList.add("Address Line 3");
-			arrayList.add("Address Line 4");
-			arrayList.add("City");
-			arrayList.add("State");
-			arrayList.add("Country");
-			arrayList.add("ZipCode");
-			dataModel.put("addressFields",arrayList);
+			ArrayList<Address> arrayList = new ArrayList<>();
+			arrayList.add(new Address("Raigaro ka mohalla , Ward - 09", "Nayabas samod", "chomu jaipur",
+					"rajasthan indea", "jaipur", "rajasthan", "india", "303806"));
+			
+			arrayList.add(new Address("Skyview Corporate Park Tower B", "Sector 74A", "",
+					"", "Gurugram", "Haryana", "india", "122004"));
+
+			dataModel.put("addressFeildList",arrayList);
 			dataModel.put("name","World");
 			template.process(dataModel, response.getWriter());
 		} catch (TemplateException e) {
