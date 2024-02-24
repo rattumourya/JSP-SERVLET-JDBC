@@ -11,6 +11,7 @@ var addressFeildList = [
 
 window.addEventListener('DOMContentLoaded',function(){
     console.log("Once DOM Loaded");
+    addAddressOptionsDynamically();
     addElipsis();
 });
 window.addEventListener('resize',function(){
@@ -18,12 +19,30 @@ window.addEventListener('resize',function(){
     addElipsis();
 });
 
+function addAddressOptionsDynamically()
+{
+    var selectEl = document.getElementById("address-dropdown");
+    var html = ``;
+    var defaultOption = `<option value="" disabled selected>Select address ...</option>`;
+    html = html + defaultOption;
+    addressFeildList.forEach(addressObject => {
+        var optionEl = `<option value="`;
+        var optionValue = Object.values(addressObject).join(", ");
+        optionEl = optionEl + optionValue;
+        optionEl = optionEl + `">`;
+        optionEl = optionEl + optionValue;
+        optionEl = optionEl + `</option>`;
+        html = html + optionEl;
+    });
+    selectEl.innerHTML = html;
+}
+
 function changeAddress(selectedIndex)
 {
-    selectedIndex = 2;
     var addressFields = document.querySelectorAll(".address-fields");
     if(addressFields.length == 0)   
     {
+        console.log("first time calling change");
         // move fields down by 3 rows
         var dropdownField = document.getElementById("drodpown-position");
         var row = dropdownField.style.getPropertyValue("grid-row-start");
@@ -36,14 +55,13 @@ function changeAddress(selectedIndex)
         // place new rows in replaced rows
         var documentTableEl = document.getElementById("documentTable");
         var html = ``;
-        var addressObject = addressFeildList[selectedIndex-1]
+        var addressObject = addressFeildList[selectedIndex-1];
         for (const key in addressObject) {
             if (Object.hasOwnProperty.call(addressObject, key)) {
-                console.log(key, addressObject[key]);
                 var html = html +  `<tr class="address-fields">
                                         <td>
                                             <span> ` + key + `</span>
-                                            <input type="text" class="form-control" value="`+addressObject[key] +`" />
+                                            <input type="text" id="`+ key +`" class="form-control" value="`+addressObject[key] +`" />
                                         </td>
                                     </tr>`; 
             }
@@ -60,7 +78,20 @@ function changeAddress(selectedIndex)
         var addressDropdown = document.getElementById("address-dropdown");
         addressDropdown.options[0].removeAttribute("selected");
         addressDropdown.options[selectedIndex].setAttribute("selected",true);
+        addressDropdown.value = Object.values(addressObject).join(", ");
     }else {
+        var addressDropdown = document.getElementById("address-dropdown");
+        console.log("second time calling change");
+        var addressObject = addressFeildList[selectedIndex-1];
+        addressDropdown.value = Object.values(addressObject).join(", ");
+        for (const key in addressObject) {
+            if (Object.hasOwnProperty.call(addressObject, key)) {
+                console.log(key);
+                var htmlEl = document.getElementById(key);
+                htmlEl.value =  addressObject[key];
+                htmlEl.innerText = addressObject[key];;
+            }
+        }
 
     }
 
@@ -81,24 +112,6 @@ function placeAddressItemsCorrectly(startRow,startCol)
     });
 }
 
-function addAddressFieldsDynamically(addressItem)
-{
-    var documentTableEl = document.getElementById("documentTable");
-    var trEl = document.createElement('tr');
-    trEl.classList.add("address-fields");
-    var tdEl = document.createElement('td');
-    var spanEl = document.createElement('span');
-    spanEl.classList.add("label");
-    var inputEl = document.createElement('input');
-    inputEl.classList.add("form-control");
-    inputEl.type = "text";
-    inputEl.value = addressItem;
-    inputEl.textContent = addressItem;
-    tdEl.appendChild(spanEl);
-    tdEl.appendChild(inputEl);
-    trEl.appendChild(tdEl);
-    documentTableEl.append(trEl);
-}
 
 function addElipsis()
 {
@@ -111,12 +124,9 @@ function addElipsis()
         var addressObject = addressFeildList[i]
         for (const key in addressObject) {
             if (Object.hasOwnProperty.call(addressObject, key)) {
-                console.log(key, addressObject[key]);
-                
+                var optionValue = Object.values(addressObject).join(", ");
+                addressOptions[i+1].innerText = optionValue.substring(0,numberOfCharactors) + " ...";
             }
         }
-        var optionText = addressOptions[i+1].innerText;
-        console.log(optionText);
-        addressOptions[i+1].innerText = optionText.substring(0,numberOfCharactors) + " ...";
     }
 }

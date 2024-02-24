@@ -49,9 +49,6 @@
                <td class="custom-dropdown">
                   <span class=" ">Address </span>
                    <select id="address-dropdown" class="form-control" onchange="changeAddress(this.selectedIndex)">
-                     <option value="" disabled selected>please select ...</option>
-                     <option value="address item 2">address item 2 address item 2 address item 2</option>
-                     <option value="address item 1">address item 1 address item 1 address item 1</option>
                    </select>
                </td>
              </tr>
